@@ -1,0 +1,11 @@
+# EN: Every change needs review from the maintainer. Security-sensitive paths are listed explicitly.
+# PT-BR: Toda mudança precisa de revisão do mantenedor. Caminhos sensíveis à segurança estão listados.
+*                    @higorac
+/SECURITY.md         @higorac
+/.github/            @higorac
+/scripts/            @higorac
+/gradle/             @higorac
+/build.gradle        @higorac
+/settings.gradle     @higorac
+/COPYING             @higorac
+/COPYING.LESSER      @higorac
