@@ -1,0 +1,40 @@
+# SPDX-License-Identifier: LGPL-3.0-only
+# EN: Builds and tests every push and pull request, validates the Gradle wrapper and checks for APIs
+#     forbidden by SECURITY.md.
+# PT-BR: Compila e testa todo push e pull request, valida o wrapper do Gradle e procura APIs proibidas
+#     pelo SECURITY.md.
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Least privilege: CI only reads the repository.
+permissions:
+  contents: read
+
+jobs:
+  security-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Gradle wrapper / Validar o wrapper do Gradle
+        uses: gradle/actions/wrapper-validation@v4
+      - name: Check forbidden APIs / Procurar APIs proibidas
+        run: bash scripts/check-forbidden-apis.sh
+
+  build:
+    needs: security-checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build and test / Compilar e testar
+        run: ./gradlew build --no-daemon
+      - name: Run daemon smoke test / Teste rápido do daemon
+        run: ./gradlew :daemon:run --no-daemon
