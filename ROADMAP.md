@@ -17,7 +17,7 @@ dates.
 ## Phase 0 tasks
 
 - [x] F0-00 Repository, LGPL-3.0 license, README, SECURITY, CONTRIBUTING, agent team
-- [ ] F0-01a Gradle skeleton for the pure-Java modules (`core`, `daemon`) and CI
+- [x] F0-01a Gradle skeleton for the pure-Java modules (`core`, `daemon`) and CI
 - [ ] F0-01b `mod` module with ModDevGradle on NeoForge 1.21.1
 - [ ] F0-01c `adapters/api` module
 - [ ] F0-02 Gradle dependency verification enabled
@@ -49,7 +49,7 @@ datas.
 ## Tarefas da Fase 0
 
 - [x] F0-00 Repositório, licença LGPL-3.0, README, SECURITY, CONTRIBUTING, equipe de agentes
-- [ ] F0-01a Esqueleto Gradle dos módulos em Java puro (`core`, `daemon`) e CI
+- [x] F0-01a Esqueleto Gradle dos módulos em Java puro (`core`, `daemon`) e CI
 - [ ] F0-01b Módulo `mod` com ModDevGradle no NeoForge 1.21.1
 - [ ] F0-01c Módulo `adapters/api`
 - [ ] F0-02 Verificação de dependências do Gradle ativada
