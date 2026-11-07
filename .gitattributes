@@ -1,0 +1,7 @@
+# Normalize line endings so reviews show real changes, not CRLF noise
+* text=auto eol=lf
+
+*.bat text eol=crlf
+*.jar binary
+*.png binary
+*.nbt binary
