@@ -1,0 +1,46 @@
+// SPDX-License-Identifier: LGPL-3.0-only
+// Shared configuration for the pure-Java modules (core, daemon).
+
+subprojects {
+    apply plugin: 'java'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+        withSourcesJar()
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation platform("org.junit:junit-bom:${junit_version}")
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        options.release = 21
+        options.compilerArgs += ['-Xlint:all', '-Werror']
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+
+    tasks.named('jar') {
+        manifest {
+            attributes(
+                'Implementation-Title': "simulated-farms-${project.name}",
+                'Implementation-Version': project.version,
+                'License': 'LGPL-3.0-only'
+            )
+        }
+        // Ship the license inside every jar.
+        from(rootProject.file('COPYING.LESSER'))
+        from(rootProject.file('COPYING'))
+    }
+}

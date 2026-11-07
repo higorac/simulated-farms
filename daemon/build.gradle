@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: LGPL-3.0-only
+// daemon: terminal process that simulates farms only while it is running.
+
+apply plugin: 'application'
+
+description = 'Simulated Farms daemon: offline simulation switch and terminal monitor'
+
+dependencies {
+    implementation project(':core')
+}
+
+application {
+    mainClass = 'io.github.higorac.simulatedfarms.daemon.Main'
+}

@@ -1,0 +1,8 @@
+// SPDX-License-Identifier: LGPL-3.0-only
+rootProject.name = 'simulated-farms'
+
+// Pure-Java modules: build without Minecraft.
+include 'core'
+include 'daemon'
+
+// The 'mod' and 'adapters:api' modules (NeoForge 1.21.1) are added in Phase 0 tasks F0-01b and F0-01c.
